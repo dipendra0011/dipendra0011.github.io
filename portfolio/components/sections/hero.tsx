@@ -57,8 +57,9 @@ export function HeroSection() {
           </nav>
         </div>
 
-        <div className="relative mt-12 grid gap-10 md:mt-16 lg:grid-cols-[auto_1fr_auto] lg:items-start lg:gap-6">
-          <div className="flex flex-wrap items-center gap-3">
+        {/* Figma 1:757 Bottom Text — CTA left, 303×322 card + 40px gap + 322×322 image right; nav untouched */}
+        <div className="relative mt-12 flex flex-col gap-10 md:mt-16 lg:mt-1 lg:flex-row lg:items-start lg:gap-0">
+          <div className="flex shrink-0 flex-wrap items-center gap-3 lg:pt-[15px]">
             <Link
               href="#footer"
               className="flex h-12 items-center justify-center rounded-full border-2 border-black bg-white px-8 font-[family-name:var(--font-inter)] text-[17.6px] font-normal uppercase leading-5 text-black transition-opacity hover:opacity-90"
@@ -84,48 +85,50 @@ export function HeroSection() {
             </span>
           </div>
 
-          <Link
-            href="#about"
-            className="relative order-first border border-[rgba(133,133,133,0.7)] bg-white p-8 transition-opacity hover:opacity-95 md:order-none lg:mx-4 lg:max-w-[303px]"
-          >
-            <span className="absolute left-7 top-5 block size-[60px]">
-              <Image
-                src={figmaAssets.iconSpark}
-                alt=""
-                width={60}
-                height={60}
-              />
-            </span>
-            <span className="mt-14 block font-[family-name:var(--font-display)] text-[32px] font-bold leading-10 text-black">
-              More About
-              <br />
-              Me?
-            </span>
-            <span className="mt-16 inline-flex flex-col">
-              <span className="font-[family-name:var(--font-display)] text-lg font-medium text-black">
-                Download
-              </span>
-              <span className="relative mt-1 block h-px w-[100px]">
+          <div className="flex w-full min-w-0 flex-1 flex-col gap-10 sm:flex-row sm:flex-wrap sm:items-start sm:justify-end lg:gap-10">
+            <Link
+              href="#about"
+              className="relative order-first box-border flex min-h-[322px] w-full max-w-[303px] flex-col border border-[rgba(133,133,133,0.7)] bg-white p-8 transition-opacity hover:opacity-95 sm:order-none lg:h-[322px]"
+            >
+              <span className="absolute left-7 top-5 block size-[60px]">
                 <Image
-                  src={figmaAssets.lineDecor}
+                  src={figmaAssets.iconSpark}
                   alt=""
-                  width={100}
-                  height={1}
-                  className="w-full"
+                  width={60}
+                  height={60}
                 />
               </span>
-            </span>
-          </Link>
+              <span className="mt-14 block font-[family-name:var(--font-display)] text-[32px] font-bold leading-10 text-black">
+                More About
+                <br />
+                Me?
+              </span>
+              <span className="mt-16 inline-flex flex-col">
+                <span className="font-[family-name:var(--font-display)] text-lg font-medium text-black">
+                  Download
+                </span>
+                <span className="relative mt-1 block h-px w-[100px]">
+                  <Image
+                    src={figmaAssets.lineDecor}
+                    alt=""
+                    width={100}
+                    height={1}
+                    className="w-full"
+                  />
+                </span>
+              </span>
+            </Link>
 
-          <div className="relative aspect-square w-full max-w-[322px] justify-self-end border border-[rgba(133,133,133,0.7)] lg:justify-self-end">
-            <Image
-              src={figmaAssets.rectangle2}
-              alt="Featured project mockup on laptop"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 322px"
-              priority
-            />
+            <div className="relative h-[322px] w-full max-w-[322px] shrink-0 overflow-hidden border border-[rgba(133,133,133,0.7)] sm:max-w-none sm:w-[322px]">
+              <Image
+                src={figmaAssets.rectangle2}
+                alt="Featured project mockup on laptop"
+                fill
+                className="object-cover"
+                sizes="322px"
+                priority
+              />
+            </div>
           </div>
         </div>
       </div>
