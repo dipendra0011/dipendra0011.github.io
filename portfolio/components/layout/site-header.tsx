@@ -12,7 +12,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { figmaAssets } from "@/lib/figma-assets";
 import { SITE_NAV_ITEMS } from "@/lib/site-navigation";
 
 /** Compact sticky nav appears after scrolling this fraction of the viewport (0.3 = 30%). */
@@ -151,25 +150,21 @@ export function SiteHeader() {
             >
               <Link
                 href="#hero"
-                className="group flex shrink-0 items-center gap-0"
+                className="group flex shrink-0 items-center"
                 aria-label="Dipendra Shrestha home"
                 onClick={closeMobile}
               >
-                <span className="relative block h-[24px] w-[62px] shrink-0 sm:h-[27px] sm:w-[70px]">
+                {/* logo-header.png: width matches scaled intrinsic width (72×46 at this height) so nothing is cropped sideways */}
+                <span className="relative block h-9 w-[56px] shrink-0 overflow-hidden sm:h-11 sm:w-[69px]">
                   <Image
-                    src={figmaAssets.logoDiPen}
+                    src="/logo-header.png"
                     alt=""
-                    fill
-                    className="object-contain object-left"
-                    sizes="70px"
+                    width={72}
+                    height={46}
+                    className="h-full w-auto max-w-none select-none"
                     priority
+                    draggable={false}
                   />
-                </span>
-                <span
-                  className="-mt-0.5 ml-0.5 hidden text-right font-[family-name:var(--font-poppins)] text-[11px] font-light uppercase tracking-[7.44px] text-white sm:block sm:text-[12px]"
-                  aria-hidden
-                >
-                  DRAWS
                 </span>
               </Link>
 

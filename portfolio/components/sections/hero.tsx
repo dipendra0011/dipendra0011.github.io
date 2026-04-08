@@ -58,14 +58,14 @@ export function HeroSection() {
         </div>
 
         {/* Figma 1:757 Bottom Text — CTA left, 303×322 card + 40px gap + 322×322 image right; nav untouched */}
-        <div className="relative mt-12 flex flex-col gap-10 md:mt-16 lg:mt-1 lg:flex-row lg:items-start lg:gap-0">
-          <div className="flex shrink-0 flex-wrap items-center gap-3 lg:pt-[15px]">
-            <Link
-              href="#footer"
-              className="flex h-12 items-center justify-center rounded-full border-2 border-black bg-white px-8 font-[family-name:var(--font-inter)] text-[17.6px] font-normal uppercase leading-5 text-black transition-opacity hover:opacity-90"
-            >
-              Let&apos;s talk
-            </Link>
+        <div className="relative z-10 mt-12 flex flex-col gap-10 md:mt-16 lg:mt-1 lg:flex-row lg:items-start lg:gap-0">
+          <div className="relative z-20 flex shrink-0 flex-wrap items-center gap-3 lg:pt-[15px]">
+          <Link
+             href="#footer"
+               className="relative inline-flex h-12 shrink-0 items-center justify-center rounded-full border-2 border-white bg-white px-8 text-[17.6px] font-medium uppercase leading-none text-black whitespace-nowrap shadow-sm transition-opacity hover:opacity-90"
+                >
+                  <span className="relative z-10 text-black">Let&apos;s talk</span>
+                    </Link>
             <span className="relative inline-flex size-[45px] shrink-0 items-center justify-center">
               <Image
                 src={figmaAssets.iconArrowBadge}
@@ -85,7 +85,7 @@ export function HeroSection() {
             </span>
           </div>
 
-          <div className="flex w-full min-w-0 flex-1 flex-col gap-10 sm:flex-row sm:flex-wrap sm:items-start sm:justify-end lg:gap-10">
+          <div className="flex min-w-0 flex-1 flex-col gap-10 max-lg:w-full sm:flex-row sm:flex-wrap sm:items-start sm:justify-end lg:min-w-0 lg:flex-1 lg:basis-0 lg:flex-row lg:gap-10">
             <Link
               href="#about"
               className="relative order-first box-border flex min-h-[322px] w-full max-w-[303px] flex-col border border-[rgba(133,133,133,0.7)] bg-white p-8 transition-opacity hover:opacity-95 sm:order-none lg:h-[322px]"
