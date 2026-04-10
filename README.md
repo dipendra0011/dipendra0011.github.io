@@ -1,13 +1,20 @@
-# Portfolio (dipendrashrest.me)
+# dipendra0011.github.io
 
-Next.js site lives in **`portfolio/`**. Production is a **static export** (`next build` → `portfolio/out/`) deployed to **GitHub Pages** via Actions.
+Source for **dipendrashrest.me** — Next.js app in **`portfolio/`**, static export synced to **`docs/`** for GitHub Pages.
+
+## Make the domain show the site (not this README)
+
+1. Repo **Settings → Pages**
+2. **Build and deployment → Source:** **Deploy from a branch**
+3. **Branch:** `main`, **Folder:** **`/docs`** (not `/ root`)
+4. **Save**
+
+After the next push to `main`, workflow **Deploy site to docs** builds the app and commits the **`docs/`** folder. Your custom domain should then load the portfolio.
 
 ## Custom domain
 
-- Repo root **`CNAME`** (`dipendrashrest.me`) is for reference.
-- The file that must ship with the site is **`portfolio/public/CNAME`** (copied into `out/` on build).
-- GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-- DNS for `dipendrashrest.me` should point to GitHub Pages as in [their docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
+- **`docs/CNAME`** is produced by the build (from `portfolio/public/CNAME`).
+- Keep **dipendrashrest.me** in GitHub Pages **Custom domain** settings; DNS must point to GitHub as in [their guide](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
 ## Local development
 
@@ -17,15 +24,14 @@ npm install
 npm run dev
 ```
 
-## Production build
+## Manual export (optional)
 
 ```bash
 cd portfolio
 npm run build
+# preview: npx serve out
 ```
 
-Static files are written to **`portfolio/out/`** (gitignored).
+---
 
-## Push to `main`
-
-Pushing to **`main`** runs **`.github/workflows/deploy-github-pages.yml`**, which publishes `portfolio/out` to GitHub Pages.
+_Development notes (not the live site):_ the Next.js project, workflows, and `portfolio/` source live on the `main` branch. The published site files live under **`docs/`**.
