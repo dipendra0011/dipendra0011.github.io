@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { CV_PDF_PATH } from "@/lib/cv";
 import { figmaAssets } from "@/lib/figma-assets";
 import { SITE_NAV_ITEMS } from "@/lib/site-navigation";
 
@@ -86,24 +87,31 @@ export function HeroSection() {
           </div>
 
           <div className="flex min-w-0 flex-1 flex-col gap-10 max-lg:w-full sm:flex-row sm:flex-wrap sm:items-start sm:justify-end lg:min-w-0 lg:flex-1 lg:basis-0 lg:flex-row lg:gap-10">
-            <Link
-              href="#about"
-              className="relative order-first box-border flex min-h-[322px] w-full max-w-[303px] flex-col border border-[rgba(133,133,133,0.7)] bg-white p-8 transition-opacity hover:opacity-95 sm:order-none lg:h-[322px]"
-            >
-              <span className="absolute left-7 top-5 block size-[60px]">
-                <Image
-                  src={figmaAssets.iconSpark}
-                  alt=""
-                  width={60}
-                  height={60}
-                />
-              </span>
-              <span className="mt-14 block font-[family-name:var(--font-display)] text-[32px] font-bold leading-10 text-black">
-                More About
-                <br />
-                Me?
-              </span>
-              <span className="mt-16 inline-flex flex-col">
+            <div className="relative order-first box-border flex min-h-[322px] w-full max-w-[303px] flex-col border border-[rgba(133,133,133,0.7)] bg-white p-8 transition-opacity hover:opacity-95 sm:order-none lg:h-[322px]">
+              <Link
+                href="#about"
+                className="block text-left outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+              >
+                <span className="absolute left-7 top-5 block size-[60px]">
+                  <Image
+                    src={figmaAssets.iconSpark}
+                    alt=""
+                    width={60}
+                    height={60}
+                  />
+                </span>
+                <span className="mt-14 block font-[family-name:var(--font-display)] text-[32px] font-bold leading-10 text-black">
+                  More About
+                  <br />
+                  Me?
+                </span>
+              </Link>
+              <a
+                href={CV_PDF_PATH}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-16 inline-flex w-fit flex-col outline-none transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+              >
                 <span className="font-[family-name:var(--font-display)] text-lg font-medium text-black">
                   Download
                 </span>
@@ -116,8 +124,9 @@ export function HeroSection() {
                     className="w-full"
                   />
                 </span>
-              </span>
-            </Link>
+                <span className="sr-only"> résumé (opens in new tab)</span>
+              </a>
+            </div>
 
             <div className="relative h-[322px] w-full max-w-[322px] shrink-0 overflow-hidden border border-[rgba(133,133,133,0.7)] sm:max-w-none sm:w-[322px]">
               <Image

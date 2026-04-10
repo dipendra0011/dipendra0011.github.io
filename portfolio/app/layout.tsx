@@ -51,8 +51,13 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${display.variable} ${instrument.variable} ${inter.variable} ${poppins.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full bg-background text-foreground">
+      {/* suppressHydrationWarning: extensions (e.g. cz-shortcut-listen on body) mutate DOM before hydrate */}
+      <body
+        className="min-h-full bg-background text-foreground"
+        suppressHydrationWarning
+      >
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1">{children}</main>
