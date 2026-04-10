@@ -8,8 +8,8 @@ export type SiteNavItem = {
 
 /** Primary in-page navigation — header + hero nav + mobile menu. */
 export const SITE_NAV_ITEMS: readonly SiteNavItem[] = [
-  { href: "#hero", label: "Home", heroLabel: "Home" },
-  { href: "#work", label: "Projects", heroLabel: "PROJECTS" },
-  { href: "#skills", label: "Skills", heroLabel: "SKILLS" },
-  { href: "#experience", label: "Experience", heroLabel: "eXPEDRIENCE" },
+  { href: "/#hero", label: "Home", heroLabel: "Home" },
+  { href: "/#work", label: "Projects", heroLabel: "PROJECTS" },
+  { href: "/#skills", label: "Skills", heroLabel: "SKILLS" },
+  { href: "/#experience", label: "Experience", heroLabel: "eXPEDRIENCE" },
 ] as const;

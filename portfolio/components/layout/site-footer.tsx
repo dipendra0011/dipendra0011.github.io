@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { figmaAssets } from "@/lib/figma-assets";
 
 const social = [
@@ -28,13 +27,8 @@ function getGreeting() {
 }
 
 export function SiteFooter() {
-  const [year, setYear] = useState(2026);
-  const [greeting, setGreeting] = useState("Have a good day");
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-    setGreeting(getGreeting());
-  }, []);
+  const year = new Date().getFullYear();
+  const greeting = getGreeting();
 
   return (
     <footer id="footer" className="border-t border-line-grey/80 bg-background pb-16 pt-20 md:pb-24 md:pt-28">
@@ -82,10 +76,7 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col items-center gap-8 border-t border-line-grey/60 pt-10 md:flex-row md:items-end md:justify-between">
-          <p
-            className="font-[family-name:var(--font-display)] text-lg font-medium uppercase text-white"
-            suppressHydrationWarning
-          >
+          <p className="font-[family-name:var(--font-display)] text-lg font-medium uppercase text-white">
             ©{year} DIPENDRA_SHRESTHA
           </p>
 
@@ -102,10 +93,7 @@ export function SiteFooter() {
             </span>
           </motion.button>
 
-          <p
-            className="font-[family-name:var(--font-display)] text-lg font-extrabold uppercase text-accent-lime"
-            suppressHydrationWarning
-          >
+          <p className="font-[family-name:var(--font-display)] text-lg font-extrabold uppercase text-accent-lime">
             {greeting}
           </p>
         </div>

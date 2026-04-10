@@ -80,3 +80,41 @@ a {
     padding-inline: 2.5rem;
   }
 }
+
+/* Client logos — infinite horizontal marquee (two identical strips + pr = one gap for seamless -50% loop) */
+@keyframes client-logos-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.client-logos-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: client-logos-marquee 45s linear infinite;
+}
+
+.client-logos-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logos-marquee {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .client-logos-marquee-track {
+    animation: none;
+  }
+
+  .client-logos-marquee-track > div:last-of-type {
+    display: none;
+  }
+}

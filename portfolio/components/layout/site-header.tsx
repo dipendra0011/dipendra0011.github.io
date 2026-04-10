@@ -12,6 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { usePathname } from "next/navigation";
 import { SITE_NAV_ITEMS } from "@/lib/site-navigation";
 
 /** Compact sticky nav appears after scrolling this fraction of the viewport (0.3 = 30%). */
@@ -56,6 +57,7 @@ function useHeaderHeight(ref: React.RefObject<HTMLElement | null>) {
 }
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const panelId = useId();
@@ -68,6 +70,9 @@ export function SiteHeader() {
   const scrollThresholdPx = viewportH * STICKY_SCROLL_THRESHOLD_RATIO;
   const pastFirstViewport =
     viewportH > 0 && scrollY >= scrollThresholdPx - 0.5;
+  /** Figma project frames show centered desktop nav on case study pages (not only after scroll). */
+  const isCaseStudyRoute = pathname.startsWith("/work");
+  const showDesktopPrimaryNav = pastFirstViewport || isCaseStudyRoute;
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -149,7 +154,7 @@ export function SiteHeader() {
               transition={{ type: "spring", stiffness: 420, damping: 34 }}
             >
               <Link
-                href="#hero"
+                href="/#hero"
                 className="group flex shrink-0 items-center"
                 aria-label="Dipendra Shrestha home"
                 onClick={closeMobile}
@@ -169,7 +174,7 @@ export function SiteHeader() {
               </Link>
 
               <AnimatePresence mode="wait">
-                {pastFirstViewport ? (
+                {showDesktopPrimaryNav ? (
                   <motion.nav
                     key="compact-nav"
                     className="hidden items-center gap-8 lg:flex"
@@ -194,7 +199,7 @@ export function SiteHeader() {
 
               <div className="flex shrink-0 items-center gap-2 sm:gap-3">
                 <Link
-                  href="#footer"
+                  href="/#footer"
                   className="relative flex h-10 items-center justify-center rounded-full border border-border-nav bg-black px-4 outline outline-2 outline-offset-[-2px] outline-white transition-opacity hover:opacity-90 sm:h-12 sm:px-6"
                 >
                   <span className="font-[family-name:var(--font-instrument)] text-sm font-normal uppercase leading-5 text-white sm:text-[17.6px]">
@@ -272,7 +277,7 @@ export function SiteHeader() {
                 </nav>
                 <div className="mt-auto shrink-0 border-t border-border-grey pt-8">
                   <Link
-                    href="#footer"
+                    href="/#footer"
                     className="flex h-12 w-full items-center justify-center rounded-full border border-border-nav bg-black outline outline-2 outline-offset-[-2px] outline-white"
                     onClick={closeMobile}
                   >
